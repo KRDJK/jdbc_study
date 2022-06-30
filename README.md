@@ -4,7 +4,7 @@
   - 다음을 사용하여 빌드 및 실행과 테스트 실행을 Gradle에서 IntelliJ로 변경
 
 
-1.데이터베이스 연결 설정
+2. 데이터베이스 연결 설정
 - C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib 에서 ojbc6.jar 찾아서 복사
 - 아래 설정 경로 /src/main/webapp/WEB-INF/lib에 붙여넣기
 
@@ -14,3 +14,14 @@
 //오라클 라이브러리 (11g edition - gradle, maven 라이센스 문제 공식 지원 불가)
 implementation fileTree(dir: '/src/main/webapp/WEB-INF/lib', include: ['*.jar'])
 ```
+
+3. lombok 적용하기
+1. build.gradle - dependencies에 추가
+```groovy
+    //lombok 라이브러리
+   compileOnly 'org.projectlombok:lombok:1.18.12'
+   annotationProcessor 'org.projectlombok:lombok:1.18.12'
+```
+
+[//]: # (2. 인텔리제이 플러그인 lombok 설치) 이제 필요없다고 함
+3. 설정에 annotation processor 검색 -> 아노테이션 활성화 체크

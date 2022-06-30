@@ -187,9 +187,9 @@ public class PersonCRUD {
             // 쿼리 실행 결과로 뱉어낸 조회 결과인 2차원의 표가 ResultSet이다.
 
             // ResultSet을 순회해서 소비 (2차원 표에서 데이터들을 뽑아오는 것, 뽑아와야 리스트에 담지)
-            // a - next() 메서드를 통해 행들을 순서대로 지목
+            // a단계 - next() 메서드를 통해 행들을 순서대로 지목
                 // 다음 행을 가져올게 있으면 true가 나오고, 없다면 false가 나온다.
-            // b - getter 메서드를 통해 열 데이터를 추출.
+            // b단계 - getter 메서드를 통해 열 데이터를 추출.
             while (rs.next()) { // 이러면 표에서 한 줄씩을 가져온다.
                 String ssn = rs.getString("ssn");
 //                System.out.println("ssn = " + ssn); // 출력이 목적이 아니니까 리스트에 담자.
@@ -200,6 +200,8 @@ public class PersonCRUD {
                 int age = rs.getInt("age");
 //                System.out.println("age = " + age);
 
+                
+                // 리스트에 담기
                 Person p = makePerson(ssn, name, age);
                 personList.add(p);
 
