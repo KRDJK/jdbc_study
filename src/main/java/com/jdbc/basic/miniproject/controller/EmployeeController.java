@@ -113,7 +113,7 @@ public class EmployeeController {
     }
 
 
-    // 지출될 급여들의 총합
+    // 지출될 급여들의 총합을 구해서 알려주는 메서드 (월별 지출 급여 합)
     public long totalSalary() {
         return repository.sumSalary();
     }

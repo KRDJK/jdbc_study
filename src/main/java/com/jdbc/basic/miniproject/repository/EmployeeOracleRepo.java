@@ -14,7 +14,7 @@ import java.util.Map;
 public class EmployeeOracleRepo implements EmployeeRepository {
     @Override
     public boolean save(Employee employee) {
-        String sql = "INSERT INTO employee VALUES (seq_employee.nextval, ?, ?, ?, ?";
+        String sql = "INSERT INTO employee VALUES (seq_employee.nextval, ?, ?, ?, ?)";
 
         try (Connection conn = Connect.makeConnection()) {
             conn.setAutoCommit(false);
@@ -61,7 +61,7 @@ public class EmployeeOracleRepo implements EmployeeRepository {
                         rs.getInt("emp_no")
                         , rs.getString("emp_nm")
                         , rs.getString("emp_rank")
-                        , rs.getString("birth_de")
+                        , rs.getString("bir_de")
                         , rs.getInt("salary")
                 );
                 return employee;
@@ -169,7 +169,7 @@ public class EmployeeOracleRepo implements EmployeeRepository {
 
     @Override
     public long sumSalary() {
-        String sql = "SELECT SUM(salary) FROM employee AS sal_total";
+        String sql = "SELECT SUM(salary) AS sal_total FROM employee";
 
         try (Connection conn = Connect.makeConnection()){
 

@@ -11,6 +11,8 @@ public interface ScheduleRepository {
 
     // 일정 조회
     Map<Integer, Schedule> findAllSchedule();
+    Schedule findOneSchedule(int scheduleNo);
+
 
     // 일정 수정
     boolean modify(Schedule schedule);

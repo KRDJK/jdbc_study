@@ -24,12 +24,16 @@ public class Employee {
         switch (this.empRank) {
             case "부장":
                 this.salary = 4000000;
+                return;
             case "과장":
                 this.salary = 3000000;
+                return;
             case "대리":
                 this.salary = 2500000;
+                return;
             case "사원":
                 this.salary = 2000000;
+                return;
         }
     }
 

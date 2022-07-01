@@ -1,6 +1,7 @@
 package com.jdbc.basic.miniproject.repository;
 
 import com.jdbc.basic.Connect;
+import com.jdbc.basic.miniproject.domain.Employee;
 import com.jdbc.basic.miniproject.domain.Schedule;
 
 import java.sql.Connection;
@@ -77,6 +78,40 @@ public class ScheduleOracleRepo implements ScheduleRepository {
         }
     }
 
+    public Schedule findOneSchedule(int scheduleNo) {
+        String sql = "SELECT * FROM schedule WHERE schedule_no = ?";
+
+        try (Connection conn = Connect.makeConnection()) {
+
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+
+
+            pstmt.setInt(1, scheduleNo);
+
+
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                Schedule schedule = new Schedule(
+                        rs.getInt("schedule_no")
+                        , rs.getString("schedule_nm")
+                        , rs.getString("start_date")
+                        , rs.getString("end_date")
+                        , rs.getString("manager_nm")
+                        , rs.getString("manager_rank")
+                );
+                return schedule;
+            }
+
+            return null;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
     @Override
     public boolean modify(Schedule schedule) {
         String sql = "UPDATE schedule SET schedule_nm = ?, end_date = ?, manager_nm = ?, manager_rank = ? WHERE schedule_no = ?";
@@ -110,7 +145,7 @@ public class ScheduleOracleRepo implements ScheduleRepository {
 
     @Override
     public boolean remove(int scheduleNo) {
-        String sql = "DELETE FROM employee WHERE emp_no = ?";
+        String sql = "DELETE FROM schedule WHERE schedule_no = ?";
 
         try (Connection conn = Connect.makeConnection()) {
             conn.setAutoCommit(false);

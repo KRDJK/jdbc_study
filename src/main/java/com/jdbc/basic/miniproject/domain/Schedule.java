@@ -19,7 +19,7 @@ public class Schedule {
 
     @Override
     public String toString() {
-        return String.format("%10s %20s %2s %4s %10s\n",
-                startDate, scheduleName, managerRank, managerName, endDate);
+        return String.format("%d || %s || %s || %s || %s || %s",
+                scheduleNo, startDate, scheduleName, managerRank, managerName, endDate);
     }
 }
