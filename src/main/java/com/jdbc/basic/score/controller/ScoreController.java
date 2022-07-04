@@ -15,7 +15,7 @@ public class ScoreController {
     // 성적 정보가 저장될 맵 ( key : 학번, value : 성적 정보 )
     private static Map<Integer, Score> scoreMap; // 리스트를 쓰지 않는 이유는 중간에 전학가면 인덱스가 땡겨지는데 출석번호가 땡겨지는게 말이 돼?
 
-    // ScoreRepository에 의존성 관계를 가진다.
+    // ScoreRepository에 의존성 관계를 가진다. (DIP 원칙 : 의존관계 역전 원칙)
     private final ScoreRepository repository; // repository가 없으면 일을 못하기 때문에 컨트롤러는 얘한테 의존한다고 할 수 있다.
                                 // 추상적(인터페이스) 존재에 의존을 해야한다. 다형성을 적용하기 위해서!! 누구라도 대체할 수 있게!
                                 // 특정 직원에게 의존하는 것이 아닌 직원 역할 자체에 의존하는 것.
@@ -24,7 +24,7 @@ public class ScoreController {
         scoreMap = new HashMap<>();
     }
 
-    public ScoreController() {
+    public ScoreController() { // 완벽한 DIP 원칙을 적용한다면 이 부분 조차도 향후 변동이 없어야 한다.
         this.repository = new ScoreOracleRepo(); // 레퍼지토리는 DB 관련 명령을 수행할 직원 같은 개념이다.
     }
 

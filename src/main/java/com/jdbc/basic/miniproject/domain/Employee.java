@@ -16,7 +16,7 @@ public class Employee {
 
     private String birthDay; // 사원 생일
 
-    private int salary; // 급여
+    private Integer salary; // 급여
     
     
     // 사원 급여를 계산해주는 메서드
@@ -33,6 +33,9 @@ public class Employee {
                 return;
             case "사원":
                 this.salary = 2000000;
+                return;
+            default:
+                this.salary = 0;
                 return;
         }
     }

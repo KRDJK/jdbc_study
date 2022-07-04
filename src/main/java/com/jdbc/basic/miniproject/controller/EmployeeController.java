@@ -77,6 +77,7 @@ public class EmployeeController {
         if (hasEmployee(empNo)) {
             Employee target = findOneEmployee(empNo);
             target.setEmpRank(empRank);
+            target.inputSalary();
 
             return repository.modify(target);
         } else {
